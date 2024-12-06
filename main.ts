@@ -1,6 +1,7 @@
 import { AtpAgent } from "npm:@atproto/api";
 import "jsr:@std/dotenv/load";
 import { DOMParser } from "jsr:@b-fuze/deno-dom";
+import { Image } from "npm:imagescript";
 
 const count = +Deno.env.get("RUN_COUNT")!;
 
@@ -25,7 +26,18 @@ async function main() {
       password: Deno.env.get("BLUESKY_PASSWORD")!,
     });
 
-    const blobResp = await agent.uploadBlob(imageBlob);
+    const panel = Image.decode(await imageBlob.arrayBuffer());
+    const w = (await panel).width;
+    const h = (await panel).height;
+
+    const mat = new Image(w, h + (0.05 * h));
+    mat.fill(Image.rgbaToColor(255, 255, 255, 0xff));
+    const composite = mat.composite(await panel, 0, (0.05 * h) / 2);
+    const buffer = await composite.encodeJPEG();
+
+    const compBlob = new Blob([buffer]);
+
+    const blobResp = await agent.uploadBlob(compBlob);
 
     console.log(blobResp);
 

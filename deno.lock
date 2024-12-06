@@ -5,7 +5,9 @@
     "jsr:@b-fuze/deno-dom@~0.1.48": "0.1.48",
     "jsr:@std/dotenv@*": "0.225.3",
     "npm:@atproto/api@*": "0.13.19",
-    "npm:@atproto/api@~0.13.19": "0.13.19"
+    "npm:@atproto/api@~0.13.19": "0.13.19",
+    "npm:imagescript@*": "1.3.0",
+    "npm:imagescript@^1.3.0": "1.3.0"
   },
   "jsr": {
     "@b-fuze/deno-dom@0.1.48": {
@@ -64,6 +66,9 @@
     "graphemer@1.4.0": {
       "integrity": "sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag=="
     },
+    "imagescript@1.3.0": {
+      "integrity": "sha512-lCYzQrWzdnA68K03oMj/BUlBJrVBnslzDOgGFymAp49NmdGEJxGeN7sHh5mCva0nQkq+kkKSuru2zLf1m04+3A=="
+    },
     "iso-datestring-validator@2.2.2": {
       "integrity": "sha512-yLEMkBbLZTlVQqOnQ4FiMujR6T4DEcCb1xizmvXS+OxuhwcbtynoosRzdMA69zZCShCNAbi+gJ71FxZBBXx1SA=="
     },
@@ -117,7 +122,8 @@
   "workspace": {
     "dependencies": [
       "jsr:@b-fuze/deno-dom@~0.1.48",
-      "npm:@atproto/api@~0.13.19"
+      "npm:@atproto/api@~0.13.19",
+      "npm:imagescript@^1.3.0"
     ]
   }
 }

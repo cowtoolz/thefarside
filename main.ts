@@ -2,7 +2,7 @@ import { AtpAgent } from "npm:@atproto/api";
 import "jsr:@std/dotenv/load";
 import { DOMParser } from "jsr:@b-fuze/deno-dom";
 
-const count = +Deno.env.get("COUNT")!;
+const count = +Deno.env.get("STATE")!;
 
 async function main() {
   try {

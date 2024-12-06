@@ -39,6 +39,7 @@ async function main() {
         }],
       },
     });
+    await Deno.writeTextFile("state", `${count + 1}`);
     console.log("Just posted!");
   } catch (err) {
     console.error(err);
@@ -46,5 +47,3 @@ async function main() {
 }
 
 main();
-
-await Deno.writeTextFile("state", `${count + 1}`);

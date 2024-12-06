@@ -8,6 +8,7 @@ on:
 jobs:
   toil:
     runs-on: ubuntu-latest
+    environment: main
 
     steps:
       - uses: actions/checkout@v4
@@ -21,4 +22,6 @@ jobs:
         env:
           BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
           BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
-        run: deno task post
+          RUN_COUNT: ${{ github.run_number }}
+        run: |
+          deno task post

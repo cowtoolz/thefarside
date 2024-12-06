@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "post": "STATE=$(cat state) deno run --allow-write --allow-env --allow-net --allow-read main.ts"
+    "post": "deno run --allow-write --allow-env --allow-net --allow-read main.ts"
   },
   "imports": {
     "@atproto/api": "npm:@atproto/api@^0.13.19",

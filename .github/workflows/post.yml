@@ -6,7 +6,7 @@ on:
     - cron: "0 12,15,17,20,23 * * *"
 
 jobs:
-  run-post-task:
+  toil:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,4 +18,7 @@ jobs:
           deno-version: v2.x
 
       - name: Post
+        env:
+          BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+          BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
         run: deno task post

@@ -2,7 +2,7 @@
 
 This bot posts selections directly from [thefarside.com](https://www.thefarside.com/) 5 times per day, everyday. It is written in TypeScript via Deno.
 
-It requires that the actions environment have two environent variables set:
+It requires that actions have two repository secrets set:
 
 - `BLUESKY_USERNAME`
 - `BLUESKY_PASSWORD`

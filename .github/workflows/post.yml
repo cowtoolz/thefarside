@@ -1,0 +1,20 @@
+name: Scheduled Deno Tasks
+
+on:
+  schedule:
+    - cron: "0 12,15,17,20,23 * * *"
+
+jobs:
+  run-post-task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v2.x
+
+      - name: Post
+        run: deno task post

@@ -11,7 +11,7 @@ async function main() {
     const html = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html")!;
-    const card = doc.querySelectorAll(".card-body")![count % 10];
+    const card = doc.querySelectorAll(".card-body")![count % 5];
     const text = card.querySelector(".figure-caption")!.innerText.trim();
     const imageUrl = card.querySelector("img")!.getAttribute("data-src")!;
     const imageResponse = await fetch(imageUrl);

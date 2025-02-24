@@ -6,3 +6,4 @@ It requires that actions have two repository secrets set:
 
 - `BLUESKY_USERNAME`
 - `BLUESKY_PASSWORD`
+

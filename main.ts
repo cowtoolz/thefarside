@@ -47,13 +47,12 @@ async function scrapePanel(seen: Set<string>): Promise<
   const UA =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36";
 
-  const res = await fetch("https://www.thefarside.com/", {
-    headers: {
-      "user-agent": UA,
-      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-      "accept-language": "en-US,en;q=0.9",
-    },
-  });
+  const res = await fetch("https://www.thefarside.com/", { headers: { "user-agent": UA } });
+  if (!res.ok) {
+    console.error(res.status, res.headers.get("cf-mitigated"), res.headers.get("server"));
+    console.error((await res.text()).slice(0, 500));
+    throw new Error(`Page fetch failed: ${res.status}`);
+  }
   if (!res.ok) throw new Error(`Page fetch failed: ${res.status}`);
 
   const doc = parser.parseFromString(await res.text(), "text/html")!;

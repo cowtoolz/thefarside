@@ -16,10 +16,23 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v2
 
+      - name: Restore seen cache
+        uses: actions/cache/restore@v4
+        with:
+          path: seen.json
+          key: seen-${{ github.run_id }}
+          restore-keys: seen-
+
       - name: Post
         env:
           BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
           BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
-          RUN_COUNT: ${{ github.run_number }}
-        run: |
-          deno task post
+          SEEN_FILE: seen.json
+        run: deno task post
+
+      - name: Save seen cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: seen.json
+          key: seen-${{ github.run_id }}
